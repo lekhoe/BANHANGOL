@@ -18,6 +18,9 @@ app.use('/', userController);
 //category
 app.use('/', categoryController);
 
+//product
+// app.use('/', categoryController);
+
 app.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
 });

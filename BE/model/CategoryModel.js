@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
+const { baseModel } = require('./BaseModel');
 const Schema = mongoose.Schema;
+const util = require('util');
 
-var categorySchema = new Schema({
+const CategorySchema = new Schema({
     categoryID: {
         type: String,
         required: true,
@@ -21,8 +23,13 @@ var categorySchema = new Schema({
     },
 })
 
-const Category = mongoose.model('Category', categorySchema, "category");
-
+class CategoryModel extends baseModel {
+    constructor() {
+        super(); // Gọi constructor của BaseModel để kết nối với MongoDB
+        this.CategorySchema = CategorySchema
+    };
+}
+const CategoryModel = mongoose.model('Category', CategorySchema, "category");
 module.exports = {
-    Category
+    CategoryModel
 };
