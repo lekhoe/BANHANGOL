@@ -7,4 +7,4 @@ class CategoryBL extends BaseBL {
     }
 }
 
-module.exports = CategoryBL;
+module.exports = new CategoryBL;

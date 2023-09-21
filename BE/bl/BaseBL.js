@@ -8,30 +8,30 @@ const BSONRegExp = mongodb.BSONRegExp;
 class BaseBL {
     constructor(model) {
         this.model = model;
-    }
+    };
 
     getById = async (req, res) => {
-        var modelID = req.params.categoryID;
-        await this.model.findById({ categoryID: categoryID }).then((res) => {
-            if (category == null) {
-                return res.status(RESULT_CODE_API.RESULT_404).json({
-                    errorCode: RESULT_CODE_API.RESULT_404,
-                    messageUser: "Not Found"
-                });
-            } else {
-                res.send(category);
-            }
-        }, (e) => {
-            res.status(RESULT_CODE_API.RESULT_400).send({
-                errorCode: RESULT_CODE_API.RESULT_400,
-                messageUser: "Có lỗi xảy ra trong quá trình xử lý",
-                messageDev: e
-            });
-        });
+        // var modelID = req.params.categoryID;
+        // await this.model.findById({ categoryID: categoryID }).then((res) => {
+        //     if (category == null) {
+        //         return res.status(RESULT_CODE_API.RESULT_404).json({
+        //             errorCode: RESULT_CODE_API.RESULT_404,
+        //             messageUser: "Not Found"
+        //         });
+        //     } else {
+        //         res.send(category);
+        //     }
+        // }, (e) => {
+        //     res.status(RESULT_CODE_API.RESULT_400).send({
+        //         errorCode: RESULT_CODE_API.RESULT_400,
+        //         messageUser: "Có lỗi xảy ra trong quá trình xử lý",
+        //         messageDev: e
+        //     });
+        // });
     }
 
-    async create(entityData) {
-        return this.model.create(entityData);
+    async create() {
+        return this.model.create();
     }
 
     async update(entityId, entityData) {
@@ -43,4 +43,4 @@ class BaseBL {
     }
 }
 
-module.exports = BaseBL;
+module.exports = new BaseBL;

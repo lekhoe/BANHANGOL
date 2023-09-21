@@ -5,9 +5,11 @@ const router = express.Router();
 
 class CategoryController extends BaseController {
     constructor() {
-        super();
+        super('user');
     }
 }
 
 
-module.exports = CategoryController;
+
+
+module.exports = new CategoryController();

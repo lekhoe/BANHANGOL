@@ -15,7 +15,7 @@ app.use(express.json()); // Đặt middleware express.json() trước
 app.use(express.urlencoded({ extended: true }));
 app.use('/', userController);
 
-//category
+//categorys
 app.use('/', categoryController);
 
 //product

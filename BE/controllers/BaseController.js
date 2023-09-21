@@ -1,39 +1,54 @@
+const { BaseBL } = require('../bl/BaseBL');
 const express = require('express');
 const router = express.Router();
 class BaseController {
-    constructor(getById, BaseBL) {
-        // router.post('/api/category', addCategory);
-        // router.put('/api/category/:categoryID', updateCategory);
-        router.get('/api/category/:categoryID', BaseBL.getById());
-        // router.delete('/api/category/:categoryID', deleteCategory);
-        // router.post('/api/categorys', getListCategory);
+    constructor(model) {
+        // router.post('/api/users', getListUser);
+        // router.post(`/api/${model}`, addUser);
+        router.get(`/api/${model}/:${model}ID`, this.getById);
+        // router.put(`/api/${model}/:${model}ID`, updateUser);
+        // router.delete(`/api/${model}/:${model}ID`, deleteUser);
+        // router.post(`/api/login`, loginAccount);
+
     }
 
-    // async getById(req, res) {
-    //     const entityId = req.params.id;
-    //     try {
-    //         const entity = await this.baseBL.getById(entityId);
-    //         res.json(entity);
-    //     } catch (error) {
-    //         res.status(500).json({ error: error.message });
-    //     }
-    // }
+    async getById(req, res) {
+        try {
+            const entity = await BaseBL.getById(req, res);
+            res.json(entity);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    }
 
-    // async create(req, res) {
-    //     res.send(`Create ${this.entity}`);
-    // }
+    async create(req, res) {
+        try {
+            const entity = await BaseBL.create(req, res);
+            res.json(entity);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    }
 
-    // async update(req, res) {
-    //     const entityId = req.params.id;
-    //     res.send(`Update ${this.entity} with ID: ${entityId}`);
-    // }
+    async update(req, res) {
+        try {
+            const entity = await BaseBL.update(req, res);
+            res.json(entity);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    }
 
-    // async delete(req, res) {
-    //     const entityId = req.params.id;
-    //     res.send(`Delete ${this.entity} with ID: ${entityId}`);
-    // }
+    async delete(req, res) {
+        try {
+            const entity = await BaseBL.delete(req, res);
+            res.json(entity);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    }
 
 
 }
 
-module.exports = BaseController;
+module.exports = new BaseController;
