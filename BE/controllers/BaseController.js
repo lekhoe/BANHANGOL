@@ -1,10 +1,10 @@
-
+const express = require('express');
 const router = express.Router();
 class BaseController {
     constructor(getById, BaseBL) {
         // router.post('/api/category', addCategory);
         // router.put('/api/category/:categoryID', updateCategory);
-        router.get('/api/category/:categoryID', getById);
+        router.get('/api/category/:categoryID', BaseBL.getById());
         // router.delete('/api/category/:categoryID', deleteCategory);
         // router.post('/api/categorys', getListCategory);
     }

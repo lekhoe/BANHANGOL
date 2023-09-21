@@ -10,11 +10,13 @@ var model = new Schema({
     dateAdded: { type: Date, default: Date.now },
     dateChanged: { type: Date, default: Date.now },
 })
-class baseModel {
-    constructor() {
-        this.model = model;
-    }
-}
+// class baseModel {
+//     constructor() {
+//         this.model = model;
+//     }
+// }
+
+const baseModel = mongoose.model('BaseModel', model);
 
 module.exports = {
     baseModel

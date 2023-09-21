@@ -23,13 +23,13 @@ const CategorySchema = new Schema({
     },
 })
 
-class CategoryModel extends baseModel {
-    constructor() {
-        super(); // Gọi constructor của BaseModel để kết nối với MongoDB
-        this.CategorySchema = CategorySchema
-    };
-}
-const CategoryModel = mongoose.model('Category', CategorySchema, "category");
+// class CategoryModel extends baseModel {
+//     constructor() {
+//         super(); // Gọi constructor của BaseModel để kết nối với MongoDB
+//     };
+// }
+// util.inherits(CategorySchema, CategoryModel);
+const Category = baseModel.discriminator('Category', CategorySchema, "category");
 module.exports = {
-    CategoryModel
+    Category
 };
